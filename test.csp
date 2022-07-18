@@ -3,6 +3,9 @@ import "net.csp";
 
 fn main(): i32
 {
-    std::io::puts("Hello, World!");
+    net::init();
+
+
+    net::die();
     <- 0;
 }

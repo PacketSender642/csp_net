@@ -1,6 +1,5 @@
 [link("znet")]
 
-
 namespace net {
 
     type State: struct 
@@ -22,6 +21,7 @@ namespace net {
     namespace internal {
         extern "C"
         {
+            # state things
             fn zn_initialize();
             fn zn_deinitialize();
             fn zn_strerror(error: i32): const &char;
@@ -32,6 +32,15 @@ namespace net {
             fn zn_setuserdata(state: &State, data: &void);
             fn zn_retain(state: &State): u32;
             fn zn_release(state: &State): u32;
+            # timer things
+            fn zn_time();
         }
+    }
+
+    fn init() {
+        internal::zn_initialize();
+    }
+    fn die() {
+        internal::zn_deinitialize();
     }
 }
