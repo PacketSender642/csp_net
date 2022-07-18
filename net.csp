@@ -1,0 +1,37 @@
+[link("znet")]
+
+
+namespace net {
+
+    type State: struct 
+    {
+    };
+
+
+    type PeerInfo: struct 
+    {
+        addr: &u8[]
+    };
+
+    type PostHandler: struct 
+    {
+        ud: &void,
+        S: &State
+    };
+
+    namespace internal {
+        extern "C"
+        {
+            fn zn_initialize();
+            fn zn_deinitialize();
+            fn zn_strerror(error: i32): const &char;
+            fn zn_engine();
+            fn zn_newstate(): &State;
+            fn zn_close(state: &State);
+            fn zn_getuserdata(state: &State): &void;
+            fn zn_setuserdata(state: &State, data: &void);
+            fn zn_retain(state: &State): u32;
+            fn zn_release(state: &State): u32;
+        }
+    }
+}

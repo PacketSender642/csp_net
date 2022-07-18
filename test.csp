@@ -1,0 +1,8 @@
+import "io.csp";
+import "net.csp";
+
+fn main(): i32
+{
+    std::io::puts("Hello, World!");
+    <- 0;
+}
